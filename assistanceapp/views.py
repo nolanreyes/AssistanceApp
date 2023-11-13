@@ -37,7 +37,7 @@ def login_page(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('base')
             else:
                 messages.info(request, 'Username or Password is incorrect')
 
@@ -51,14 +51,14 @@ def logout_user(request):
 
 
 @login_required(login_url='login')
-def home(request):
-    return render(request, 'AssistanceApp/home.html')
+def base(request):
+    return render(request, 'AssistanceApp/base.html')
 
 
 @login_required(login_url='login')
 def map_view(request):
     # read csv file for sample locations which reload everytime map is opened
-    df = pd.read_csv("AssistanceApp/data/ResourceLocations.csv")
+    df = pd.read_csv("assistanceapp/data/ResourceLocations.csv")
     for _, row in df.iterrows():
         existing_location = Location.objects.filter(latitude=row['latitude'], longitude=row['longitude']).first()
         # check if already exists

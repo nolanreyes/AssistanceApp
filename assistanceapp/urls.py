@@ -3,12 +3,12 @@ from . import views
 
 urlpatterns = [
     # Login logout urls
-    path('register/', views.login_page, name='register'),
+    # path('register/', views.login_page, name='register'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_user, name='logout'),
 
     # app paths
-    path('', views.home, name='home'),
+    path('', views.base, name='base'),
     path('map/', views.map_view, name='map'),
     path('manageLocations/', views.manage_locations, name='manageLocations'),
     path('editLocation/<str:resource_name>/', views.edit_location, name='editLocation'),
